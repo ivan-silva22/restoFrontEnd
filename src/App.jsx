@@ -4,6 +4,7 @@ import Menu from './components/common/Menu';
 import Footer from './components/common/Footer';
 import Inicio from './components/views/Inicio';
 import Login from './components/views/Login';
+import Registro from './components/views/Registro';
 
 function App() {
  
@@ -12,7 +13,8 @@ function App() {
     <>
       {/* <Menu/> */}
       {/* <Inicio/> */}
-      <Login/>
+      {/* <Login/> */}
+      <Registro/>
       {/* <Footer/> */}
     </>
   )

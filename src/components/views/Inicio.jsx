@@ -33,7 +33,7 @@ const Inicio = () => {
                 <Card.Text>
                   Alguna descripcion
                 </Card.Text>
-                <button  className="btn btn-detalle">Ver detalle</button>
+                <button  className="btn bg-btn">Ver detalle</button>
               </Card.Body>
             </Card>
           </Col>
