@@ -16,6 +16,7 @@ const Menu = () => {
             <Nav.Link href="#link">Pedidos</Nav.Link>
             <Nav.Link href="#link">Registro</Nav.Link>
             <Nav.Link href="#link">Iniciar sesión</Nav.Link>
+            <Nav.Link href="#link">Acerca de</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
