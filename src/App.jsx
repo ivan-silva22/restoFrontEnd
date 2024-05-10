@@ -7,6 +7,7 @@ import Login from './components/views/Login';
 import Registro from './components/views/Registro';
 import Error404 from './components/views/Error404';
 import DetalleProducto from './components/views/DetalleProducto';
+import AdminProductos from './components/views/AdminProductos';
 
 function App() {
  
@@ -18,7 +19,8 @@ function App() {
       {/* <Login/> */}
       {/* <Registro/> */}
       {/* <Error404/> */}
-      <DetalleProducto/>
+      {/* <DetalleProducto/> */}
+      <AdminProductos/>
       {/* <Footer/> */}
     </>
   )

@@ -27,3 +27,7 @@
     color: #ffff !important; 
     border-color: #bc8c4c;
 }
+
+.tamanio{
+    max-width: 200px;
+}
