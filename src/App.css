@@ -25,4 +25,5 @@
 .btn-detalle{
     background-color: #bc8c4c !important;
     color: #ffff !important; 
+    border-color: #bc8c4c;
 }
