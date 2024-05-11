@@ -13,6 +13,7 @@ import CrearProducto from './components/views/Producto/CrearProducto';
 import Pedidos from './components/views/Pedidos';
 import AcercaDe from './components/views/AcercaDe';
 import AdminUsuarios from './components/views/AdminUsuarios';
+import AdminPedidos from './components/views/AdminPedidos';
 
 function App() {
  
@@ -30,7 +31,8 @@ function App() {
       {/* <CrearProducto/> */}
       {/* <Pedidos/> */}
       {/* <AcercaDe/> */}
-      <AdminUsuarios/>
+      {/* <AdminUsuarios/> */}
+      <AdminPedidos/>
       {/* <Footer/> */}
     </>
   )

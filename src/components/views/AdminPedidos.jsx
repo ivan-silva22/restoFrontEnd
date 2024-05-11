@@ -1,12 +1,12 @@
 import { Container, Table } from "react-bootstrap";
-import ItemUsuarios from "./Usuario/ItemUsuarios";
+import ItemPedidos from "./Pedidos/ItemPedidos";
 
-const AdminUsuarios = () => {
+const AdminPedidos = () => {
   return (
     <main className="main my-4">
       <Container className="my-5">
         <section>
-          <h2 className="display-6">Usuarios disponibles</h2>
+          <h2 className="display-6">Pedidos solicitados</h2>
           <hr />
         </section>
         <section>
@@ -19,13 +19,14 @@ const AdminUsuarios = () => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Rol</th>
+                <th>Cliente</th>
+                <th>Producto</th>
+                <th>Estado</th>
+                <th>Opciones</th>
               </tr>
             </thead>
             <tbody>
-              <ItemUsuarios></ItemUsuarios>
+              <ItemPedidos></ItemPedidos>
             </tbody>
           </Table>
         </section>
@@ -34,4 +35,4 @@ const AdminUsuarios = () => {
   );
 };
 
-export default AdminUsuarios;
+export default AdminPedidos;
