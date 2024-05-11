@@ -6,7 +6,7 @@ import portadaTres from "../../assets/portada-3.webp";
 
 const Inicio = () => {
   return (
-    <main className="main my-4">
+    <main className="main mb-5">
       <Carousel>
         <Carousel.Item>
           <img className="portada" src={portadaUno} alt="" />
