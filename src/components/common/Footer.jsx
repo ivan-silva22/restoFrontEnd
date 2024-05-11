@@ -1,5 +1,6 @@
-import { Container, Nav, NavLink, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import logo from "../../assets/logo.svg";
+import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
       <Container>
         <div className="contenedor-footer">
           <div>
-            <NavLink href="#">
+            <NavLink to='/'>
               <img className="logo" src={logo} alt="Logo" />
             </NavLink>
           </div>
@@ -15,9 +16,9 @@ const Footer = () => {
             <Navbar bg="dark" data-bs-theme="dark">
               <Container>
                 <Nav className="ms-auto">
-                  <Nav.Link href="#home">Inicio</Nav.Link>
-                  <Nav.Link href="#features">Acerca de</Nav.Link>
-                  <Nav.Link href="#pricing">Ubicación</Nav.Link>
+                  <NavLink end className={'nav-item nav-link'} to='/'>Inicio</NavLink>
+                  <NavLink end className={'nav-item nav-link'} to='/acercade'>Acerca de</NavLink>
+                  <NavLink end className={'nav-item nav-link'} to='*'>Ubicación</NavLink>
                 </Nav>
               </Container>
             </Navbar>
