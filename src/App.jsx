@@ -8,6 +8,7 @@ import Registro from './components/views/Registro';
 import Error404 from './components/views/Error404';
 import DetalleProducto from './components/views/DetalleProducto';
 import AdminProductos from './components/views/AdminProductos';
+import EditarProducto from './components/views/Producto/EditarProducto';
 
 function App() {
  
@@ -20,7 +21,8 @@ function App() {
       {/* <Registro/> */}
       {/* <Error404/> */}
       {/* <DetalleProducto/> */}
-      <AdminProductos/>
+      {/* <AdminProductos/> */}
+      <EditarProducto/>
       {/* <Footer/> */}
     </>
   )
