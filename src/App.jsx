@@ -9,6 +9,8 @@ import Error404 from './components/views/Error404';
 import DetalleProducto from './components/views/DetalleProducto';
 import AdminProductos from './components/views/AdminProductos';
 import EditarProducto from './components/views/Producto/EditarProducto';
+import CrearProducto from './components/views/Producto/CrearProducto';
+import Pedidos from './components/views/Pedidos';
 
 function App() {
  
@@ -22,7 +24,9 @@ function App() {
       {/* <Error404/> */}
       {/* <DetalleProducto/> */}
       {/* <AdminProductos/> */}
-      <EditarProducto/>
+      {/* <EditarProducto/> */}
+      {/* <CrearProducto/> */}
+      <Pedidos/>
       {/* <Footer/> */}
     </>
   )
