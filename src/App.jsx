@@ -12,6 +12,7 @@ import EditarProducto from './components/views/Producto/EditarProducto';
 import CrearProducto from './components/views/Producto/CrearProducto';
 import Pedidos from './components/views/Pedidos';
 import AcercaDe from './components/views/AcercaDe';
+import AdminUsuarios from './components/views/AdminUsuarios';
 
 function App() {
  
@@ -28,7 +29,8 @@ function App() {
       {/* <EditarProducto/> */}
       {/* <CrearProducto/> */}
       {/* <Pedidos/> */}
-      <AcercaDe/>
+      {/* <AcercaDe/> */}
+      <AdminUsuarios/>
       {/* <Footer/> */}
     </>
   )
