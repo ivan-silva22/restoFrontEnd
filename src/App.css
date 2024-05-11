@@ -33,3 +33,9 @@
 .estilo-form{
     font-weight: 700;
 }
+
+.img-dev{
+    width: 300px;
+    border-radius: 50%;
+    border: 3px solid #bc8c4c;
+}

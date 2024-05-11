@@ -11,6 +11,7 @@ import AdminProductos from './components/views/AdminProductos';
 import EditarProducto from './components/views/Producto/EditarProducto';
 import CrearProducto from './components/views/Producto/CrearProducto';
 import Pedidos from './components/views/Pedidos';
+import AcercaDe from './components/views/AcercaDe';
 
 function App() {
  
@@ -26,7 +27,8 @@ function App() {
       {/* <AdminProductos/> */}
       {/* <EditarProducto/> */}
       {/* <CrearProducto/> */}
-      <Pedidos/>
+      {/* <Pedidos/> */}
+      <AcercaDe/>
       {/* <Footer/> */}
     </>
   )
