@@ -33,6 +33,26 @@ function App() {
             path="/administradorproductos"
             element={<AdminProductos />}
           />
+          <Route
+            exact
+            path="/administradorusuarios"
+            element={<AdminUsuarios />}
+          />
+           <Route
+            exact
+            path="/administradorpedidos"
+            element={<AdminPedidos />}
+          />
+          <Route
+            exact
+            path="/crearproducto"
+            element={<CrearProducto />}
+          />
+          <Route
+            exact
+            path="/editarproducto"
+            element={<EditarProducto />}
+          />
           <Route  path="*" element={<Error404 />} />
         </Routes>
         <Footer />

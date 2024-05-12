@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ItemProducto = () => {
   return (
     <tr>
@@ -9,7 +11,7 @@ const ItemProducto = () => {
       </td>
       <td>Plato principal</td>
       <td className="text-center">
-        <button className="btn btn-warning me-1">Editar</button>
+        <Link className="btn btn-warning me-1" to={'/editarproducto'}>Editar</Link>
         <button className="btn btn-danger">Eliminar</button>
       </td>
     </tr>

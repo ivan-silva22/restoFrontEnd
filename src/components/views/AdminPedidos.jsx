@@ -1,5 +1,6 @@
 import { Container, Table } from "react-bootstrap";
 import ItemPedidos from "./Pedidos/ItemPedidos";
+import { Link } from "react-router-dom";
 
 const AdminPedidos = () => {
   return (
@@ -11,9 +12,15 @@ const AdminPedidos = () => {
         </section>
         <section>
           <div className="my-3">
-            <button className="btn bg-btn">Productos</button>
-            <button className="btn bg-btn mx-3">Usuarios</button>
-            <button className="btn bg-btn">Pedidos</button>
+            <Link className="btn bg-btn" to={"/administradorproductos"}>
+              Productos
+            </Link>
+            <Link className="btn bg-btn mx-3" to={"/administradorusuarios"}>
+              Usuarios
+            </Link>
+            <Link className="btn bg-btn" to={"/administradorpedidos"}>
+              Pedidos
+            </Link>
           </div>
           <Table striped bordered hover responsive>
             <thead>
