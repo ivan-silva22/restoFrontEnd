@@ -1,5 +1,6 @@
 import { Container, Table } from "react-bootstrap";
 import ItemProducto from "./Producto/ItemProducto";
+import { Link } from "react-router-dom";
 
 const AdminProductos = () => {
   return (
@@ -11,17 +12,18 @@ const AdminProductos = () => {
         </section>
         <section>
           <div className="my-3">
-            <button className="btn bg-btn">
+            <Link className="btn bg-btn" to={'/administradorusuarios'}>
                 Usuarios
-            </button>
-            <button className="btn bg-btn mx-3">
+            </Link>
+            <Link className="btn bg-btn mx-3" to={'/administradorpedidos'}>
                 Pedidos
-            </button>
-            <button
+            </Link>
+            <Link
               className="btn bg-btn"
+              to={'/crearproducto'}
             >
               Agregar
-            </button>
+            </Link>
           </div>
           <Table striped bordered hover responsive>
             <thead>
