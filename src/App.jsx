@@ -15,16 +15,21 @@ import AcercaDe from "./components/views/AcercaDe";
 import AdminUsuarios from "./components/views/AdminUsuarios";
 import AdminPedidos from "./components/views/AdminPedidos";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+
+  const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {};
+  const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
+
   return (
     <>
       <BrowserRouter>
-        <Menu />
+        <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado}/>
         <Routes>
           <Route exact path="/" element={<Inicio />} />
           <Route exact path="/registro" element={<Registro />} />
-          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado} />} />
           <Route exact path="/detalle" element={<DetalleProducto />} />
           <Route exact path="/acercade" element={<AcercaDe />} />
           <Route exact path="/pedidos" element={<Pedidos />} />
