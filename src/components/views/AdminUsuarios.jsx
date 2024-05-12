@@ -12,13 +12,13 @@ const AdminUsuarios = () => {
         </section>
         <section>
           <div className="my-3">
-            <Link className="btn bg-btn" to={"/administradorproductos"}>
+            <Link className="btn bg-btn" to={"/administrador"}>
               Productos
             </Link>
-            <Link className="btn bg-btn mx-3" to={"/administradorusuarios"}>
+            <Link className="btn bg-btn mx-3" to={"/administrador/administradorusuarios"}>
               Usuarios
             </Link>
-            <Link className="btn bg-btn" to={"/administradorpedidos"}>
+            <Link className="btn bg-btn" to={"/administrador/administradorpedidos"}>
               Pedidos
             </Link>
           </div>

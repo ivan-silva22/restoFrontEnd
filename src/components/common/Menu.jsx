@@ -35,7 +35,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                 <NavLink
                   end
                   className={"nav-item nav-link"}
-                  to="/administradorproductos"
+                  to="/administrador"
                 >
                   Administrador
                 </NavLink>

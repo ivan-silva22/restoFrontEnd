@@ -27,7 +27,7 @@ const Login = ({setUsuarioLogueado}) => {
         });
         setUsuarioLogueado(respuesta);
         if(respuesta.rol === 'administrador'){
-          navegacion('/administradorproductos');
+          navegacion('/administrador');
         }else{
           navegacion('/');
         }

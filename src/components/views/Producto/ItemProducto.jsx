@@ -11,7 +11,7 @@ const ItemProducto = () => {
       </td>
       <td>Plato principal</td>
       <td className="text-center">
-        <Link className="btn btn-warning me-1" to={'/editarproducto'}>Editar</Link>
+        <Link className="btn btn-warning me-1" to={'/administrador/editarproducto'}>Editar</Link>
         <button className="btn btn-danger">Eliminar</button>
       </td>
     </tr>
