@@ -1,0 +1,37 @@
+{
+    "productos": [
+      {
+        "id": "1",
+        "nombreProducto": "Pizza",
+        "descripcion": "alguna descripcion...",
+        "precio": 4000,
+        "imagen": "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg",
+        "categoria": "Clasicas"
+      }
+    ],
+    "usuarios": [
+      {
+        "id": "1",
+        "nombreUsuario": "admin",
+        "email": "admin@gmail.com",
+        "password": "Ivansilva18@",
+        "rol": "administrador"
+      },
+      {
+        "id": "2",
+        "nombreUsuario": "juan",
+        "email": "juan@gmail.com",
+        "password": "Ivansilva18@",
+        "rol": "cliente"
+      }
+    ],
+    "pedidos": [
+        {
+          "id": "1",
+          "usuario": "juan",
+          "fecha": "12/05/2024",
+          "productos": "Pizza",
+          "estado": "pendiente"
+        }
+      ]
+  }
