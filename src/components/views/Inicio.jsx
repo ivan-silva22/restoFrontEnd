@@ -13,6 +13,7 @@ import horarios_ from "../../assets/horario_.jpg";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import { consultaListaProductos } from "../helpers/helpers";
+import { Link } from "react-router-dom";
 
 const Inicio = ({ usuarioLogueado }) => {
   const [productos, setProductos] = useState([]);
@@ -70,7 +71,7 @@ const Inicio = ({ usuarioLogueado }) => {
                 <Card.Body>
                   <Card.Title>{producto.nombreProducto}</Card.Title>
                   <Card.Text>{producto.descripcion}</Card.Text>
-                  <button className="btn bg-btn me-2">Ver detalle</button>
+                  <Link className="btn bg-btn me-2" to={'/detalle/' + producto.id}>Ver detalle</Link>
                   <button className="btn bg-btn" onClick={pedidos}>
                     Realizar pedido
                   </button>
