@@ -59,6 +59,7 @@ const AdminProductos = () => {
                   key={producto.id}
                   producto={producto}
                   indice={indice}
+                  setProductos={setProductos}
                 ></ItemProducto>
               ))}
             </tbody>
