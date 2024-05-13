@@ -11,25 +11,37 @@ import avatar_3 from "../../assets/avatar-3.jpg";
 import horarios from "../../assets/horarios.jpg";
 import horarios_ from "../../assets/horario_.jpg";
 import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
+import { consultaListaProductos } from "../helpers/helpers";
 
+const Inicio = ({ usuarioLogueado }) => {
+  const [productos, setProductos] = useState([]);
 
-const Inicio = ({usuarioLogueado}) => {
+  useEffect(() => {
+    consultaListaProductos().then((respuesta) => {
+      if (respuesta) {
+        setProductos(respuesta);
+      } else {
+        Swal.fire(
+          "Ocurrio un error",
+          "No se puede mostrar los productos",
+          "error"
+        );
+      }
+    });
+  }, []);
 
-  
-
-  const pedidos =()=>{
-    if(usuarioLogueado.hasOwnProperty('nombreUsuario')){
-      
-    }else{
+  const pedidos = () => {
+    if (usuarioLogueado.hasOwnProperty("nombreUsuario")) {
+    } else {
       Swal.fire({
         title: "Error",
         text: "Tiene que iniciar sesión para realizar el pedido",
         icon: "error",
-        confirmButtonColor: '#bc8c4c'
+        confirmButtonColor: "#bc8c4c",
       });
     }
-  }
-
+  };
 
   return (
     <main className="main mb-5">
@@ -45,23 +57,27 @@ const Inicio = ({usuarioLogueado}) => {
         </Carousel.Item>
       </Carousel>
       <Container className="mt-3">
-        <h1>Menú principal</h1>
+        <h1>Nuestro Menú</h1>
         <hr />
         <Row>
-          <Col>
-            <Card style={{ width: "18rem" }}>
-              <Card.Img
-                variant="top"
-                src="https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg"
-              />
-              <Card.Body>
-                <Card.Title>Pizza</Card.Title>
-                <Card.Text>Alguna descripcion</Card.Text>
-                <button className="btn bg-btn me-2">Ver detalle</button>
-                <button className="btn bg-btn" onClick={pedidos}>Realizar pedido</button>
-              </Card.Body>
-            </Card>
-          </Col>
+          {productos.map((producto) => (
+            <Col key={producto.id} className="mt-2">
+              <Card style={{ width: "18rem" }}>
+                <Card.Img
+                  variant="top"
+                  src={producto.imagen}
+                />
+                <Card.Body>
+                  <Card.Title>{producto.nombreProducto}</Card.Title>
+                  <Card.Text>{producto.descripcion}</Card.Text>
+                  <button className="btn bg-btn me-2">Ver detalle</button>
+                  <button className="btn bg-btn" onClick={pedidos}>
+                    Realizar pedido
+                  </button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
         </Row>
         <section className="mt-4">
           <h2 className="text-center">Chefs talentosos</h2>
