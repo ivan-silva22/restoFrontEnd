@@ -1,8 +1,23 @@
 import { Container, Table } from "react-bootstrap";
 import ItemUsuarios from "./Usuario/ItemUsuarios";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { consultaListaUsuarios } from "../helpers/helpers";
+import Swal from "sweetalert2";
 
 const AdminUsuarios = () => {
+  const [usuarios, setUsuarios] = useState([]);
+
+  useEffect(() => {
+    consultaListaUsuarios().then((respuesta) => {
+      if (respuesta) {
+        setUsuarios(respuesta);
+      } else {
+        console.log("mesaje");
+      }
+    });
+  }, []);
+
   return (
     <main className="main my-4">
       <Container className="my-5">
@@ -15,10 +30,16 @@ const AdminUsuarios = () => {
             <Link className="btn bg-btn" to={"/administrador"}>
               Productos
             </Link>
-            <Link className="btn bg-btn mx-3" to={"/administrador/administradorusuarios"}>
+            <Link
+              className="btn bg-btn mx-3"
+              to={"/administrador/administradorusuarios"}
+            >
               Usuarios
             </Link>
-            <Link className="btn bg-btn" to={"/administrador/administradorpedidos"}>
+            <Link
+              className="btn bg-btn"
+              to={"/administrador/administradorpedidos"}
+            >
               Pedidos
             </Link>
           </div>
@@ -32,7 +53,9 @@ const AdminUsuarios = () => {
               </tr>
             </thead>
             <tbody>
-              <ItemUsuarios></ItemUsuarios>
+              {usuarios.map((itemUsuario, indice) => (
+                <ItemUsuarios key={itemUsuario.id} itemUsuario={itemUsuario} indice={indice}></ItemUsuarios>
+              ))}
             </tbody>
           </Table>
         </section>

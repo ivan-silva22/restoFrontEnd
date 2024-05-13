@@ -106,3 +106,14 @@ export const consultaCrearUsuario = async(usuario)=>{
         return false;
     }
 }
+
+export const consultaListaUsuarios = async()=>{
+    try {
+      const respuesta = await fetch(URLUsuario);
+      const listaDeUsuarios = await respuesta.json();
+      return listaDeUsuarios;
+    } catch (error) {
+        console.log(error)
+        return false;
+    }
+}

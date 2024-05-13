@@ -1,11 +1,15 @@
-const ItemUsuarios = () => {
+const ItemUsuarios = ({itemUsuario, indice}) => {
   return (
     <tr>
-      <td>1</td>
-      <td>Juan</td>
-      <td>juan@gmail.com</td>
+      <td>{indice + 1}</td>
+      <td>{itemUsuario.nombreUsuario}</td>
+      <td>{itemUsuario.email}</td>
       <td>
-        Administrador
+        {(itemUsuario.rol === "administrador")?(
+          itemUsuario.rol
+        ):(
+          'cliente'
+        ) }
       </td>
     </tr>
   );
