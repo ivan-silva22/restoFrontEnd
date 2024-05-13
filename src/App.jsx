@@ -17,6 +17,7 @@ import RutasAdmin from "./components/Routes/RutasAdmin";
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem("usuario")) || {};
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
+   
 
   return (
     <>
@@ -26,7 +27,7 @@ function App() {
           setUsuarioLogueado={setUsuarioLogueado}
         />
         <Routes>
-          <Route exact path="/" element={<Inicio />} />
+          <Route exact path="/" element={<Inicio usuarioLogueado={usuarioLogueado}/>} />
           <Route exact path="/registro" element={<Registro />} />
           <Route
             exact

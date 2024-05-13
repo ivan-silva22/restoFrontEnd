@@ -10,8 +10,27 @@ import avatar_2 from "../../assets/avatar-2.jpg";
 import avatar_3 from "../../assets/avatar-3.jpg";
 import horarios from "../../assets/horarios.jpg";
 import horarios_ from "../../assets/horario_.jpg";
+import Swal from "sweetalert2";
 
-const Inicio = () => {
+
+const Inicio = ({usuarioLogueado}) => {
+
+  
+
+  const pedidos =()=>{
+    if(usuarioLogueado.hasOwnProperty('nombreUsuario')){
+      
+    }else{
+      Swal.fire({
+        title: "Error",
+        text: "Tiene que iniciar sesión para realizar el pedido",
+        icon: "error",
+        confirmButtonColor: '#bc8c4c'
+      });
+    }
+  }
+
+
   return (
     <main className="main mb-5">
       <Carousel>
@@ -38,7 +57,8 @@ const Inicio = () => {
               <Card.Body>
                 <Card.Title>Pizza</Card.Title>
                 <Card.Text>Alguna descripcion</Card.Text>
-                <button className="btn btn-detalle">Ver detalle</button>
+                <button className="btn bg-btn me-2">Ver detalle</button>
+                <button className="btn bg-btn" onClick={pedidos}>Realizar pedido</button>
               </Card.Body>
             </Card>
           </Col>
