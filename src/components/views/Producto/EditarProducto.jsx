@@ -1,12 +1,15 @@
 import { useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { consultaObtenerProducto } from "../../helpers/helpers";
-import { useParams } from "react-router-dom";
+import { consultaEditarProducto, consultaObtenerProducto } from "../../helpers/helpers";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const EditarProducto = () => {
 
   const {id} = useParams();
+
+  const navegacion = useNavigate();
 
   const {
     register,
@@ -29,7 +32,22 @@ const EditarProducto = () => {
   },[])
 
   const onSubmit = (producto) =>{
-    console.log(producto)
+    consultaEditarProducto(producto, id).then((respuesta)=>{
+      if(respuesta && respuesta.status === 200){
+        Swal.fire({
+          title: "Producto Editado!",
+          text: `El producto ${producto.nombreProducto} fue editado correctamente`,
+          icon: "success",
+        });
+        navegacion('/administrador');
+      }else{
+        Swal.fire({
+          title: "Error!",
+          text: `El producto no fue editado, intente nuevamente más tarde`,
+          icon: "error",
+        });
+      }
+    })
   }
 
   return (

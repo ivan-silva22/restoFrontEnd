@@ -1,20 +1,20 @@
 {
   "productos": [
     {
-      "id": "1",
-      "nombreProducto": "Pizza",
+      "nombreProducto": "Calzon",
       "descripcion": "alguna descripcion...",
       "precio": 4000,
       "imagen": "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg",
-      "categoria": "Clasicas"
+      "categoria": "Clasicas",
+      "id": "1"
     },
     {
-      "id": "3153",
-      "nombreProducto": "Gaseosa 1L",
+      "nombreProducto": "Gaseosa 2.5L",
       "descripcion": "Gaseosa Coca-Cola",
-      "precio": "2500",
+      "precio": "3000",
       "imagen": "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg",
-      "categoria": "Vegana"
+      "categoria": "Vegana",
+      "id": "3153"
     },
     {
       "id": "0d0e",
