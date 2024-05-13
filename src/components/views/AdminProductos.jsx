@@ -1,8 +1,22 @@
 import { Container, Table } from "react-bootstrap";
 import ItemProducto from "./Producto/ItemProducto";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { consultaListaProductos } from "../helpers/helpers";
 
 const AdminProductos = () => {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    consultaListaProductos().then((respuesta) => {
+      if (respuesta) {
+        setProductos(respuesta);
+      } else {
+        console.log("error");
+      }
+    });
+  }, []);
+
   return (
     <main className="main my-4">
       <Container className="my-5">
@@ -12,16 +26,19 @@ const AdminProductos = () => {
         </section>
         <section>
           <div className="my-3">
-            <Link className="btn bg-btn" to={'/administrador/administradorusuarios'}>
-                Usuarios
-            </Link>
-            <Link className="btn bg-btn mx-3" to={'/administrador/administradorpedidos'}>
-                Pedidos
-            </Link>
             <Link
               className="btn bg-btn"
-              to={'/administrador/crearproducto'}
+              to={"/administrador/administradorusuarios"}
             >
+              Usuarios
+            </Link>
+            <Link
+              className="btn bg-btn mx-3"
+              to={"/administrador/administradorpedidos"}
+            >
+              Pedidos
+            </Link>
+            <Link className="btn bg-btn" to={"/administrador/crearproducto"}>
               Agregar
             </Link>
           </div>
@@ -37,7 +54,13 @@ const AdminProductos = () => {
               </tr>
             </thead>
             <tbody>
-              <ItemProducto></ItemProducto>
+              {productos.map((producto, indice) => (
+                <ItemProducto
+                  key={producto.id}
+                  producto={producto}
+                  indice={indice}
+                ></ItemProducto>
+              ))}
             </tbody>
           </Table>
         </section>

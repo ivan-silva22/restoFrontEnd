@@ -7,6 +7,14 @@
         "precio": 4000,
         "imagen": "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg",
         "categoria": "Clasicas"
+      },
+      {
+        "id": "2",
+        "nombreProducto": "Gaseosa 1L",
+        "descripcion": "alguna descripcion...",
+        "precio": 2500,
+        "imagen": "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg",
+        "categoria": "Bebidas"
       }
     ],
     "usuarios": [

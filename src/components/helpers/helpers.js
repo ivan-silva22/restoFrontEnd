@@ -1,4 +1,5 @@
 const URLUsuario = import.meta.env.VITE_API_USUARIO;
+const URLProducto = import.meta.env.VITE_API_PRODUCTO;
 
 export const login = async(usuario) =>{
     console.log(usuario)
@@ -18,5 +19,16 @@ export const login = async(usuario) =>{
         }
     } catch (error) {
         console.log(error);
+    }
+}
+
+export const consultaListaProductos = async() =>{
+    try {
+      const respuesta = await fetch(URLProducto);
+      const listaProductos = await respuesta.json();
+      return listaProductos;        
+    } catch (error) {
+        console.log(error)
+        return false;
     }
 }
