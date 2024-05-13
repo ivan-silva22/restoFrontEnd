@@ -89,3 +89,20 @@ export const consultaEditarProducto = async (producto, codigo) => {
     return false;
   }
 };
+
+
+export const consultaCrearUsuario = async(usuario)=>{
+    try {
+      const respuesta = await fetch(URLUsuario,{
+        method: "POST",
+        headers:{
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(usuario),
+      });
+      return respuesta; 
+    } catch (error) {
+        console.log(error)
+        return false;
+    }
+}

@@ -1,7 +1,12 @@
 import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { consultaCrearUsuario } from "../helpers/helpers";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Registro = () => {
+  const navegacion = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -10,7 +15,22 @@ const Registro = () => {
   } = useForm();
 
   const onSubmit = (usuario) => {
-    console.log(usuario);
+    consultaCrearUsuario(usuario).then((respuesta) => {
+      if(respuesta){
+        Swal.fire({
+          title: "Usuario creado!",
+          text: `El usuario fue creado correctamente, ahora puedes iniciar sesion`,
+          icon: "success"
+        });
+        navegacion('/login');
+      }else{
+        Swal.fire({
+          title: "Erro!",
+          text: `El usuario no fue creado correctamente, intente nuevamente más tarde`,
+          icon: "error"
+        });
+      }
+    });
   };
 
   return (
@@ -24,7 +44,7 @@ const Registro = () => {
             <Form.Control
               type="text"
               placeholder="Nombre"
-              {...register("nombre", {
+              {...register("nombreUsuario", {
                 required: "El nombre es un dato obligatorio",
                 minLength: {
                   value: 2,

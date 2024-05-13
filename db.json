@@ -37,8 +37,13 @@
       "id": "2",
       "nombreUsuario": "juan",
       "email": "juan@gmail.com",
-      "password": "Ivansilva18@",
-      "rol": "cliente"
+      "password": "Ivansilva18@"
+    },
+    {
+      "id": "84e8",
+      "nombreUsuario": "Ivan",
+      "email": "silvaivan280@gmail.com",
+      "password": "Ivansilva18@"
     }
   ],
   "pedidos": [
