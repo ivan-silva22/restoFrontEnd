@@ -1,5 +1,7 @@
 import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { consultaCrearProducto } from "../../helpers/helpers";
+import Swal from "sweetalert2";
 
 const CrearProducto = () => {
 
@@ -11,7 +13,22 @@ const CrearProducto = () => {
   } = useForm();
 
   const onSubmit = (producto) =>{
-    console.log(producto)
+    consultaCrearProducto(producto).then((respuesta)=>{
+      if(respuesta && respuesta.status === 201){
+        Swal.fire({
+          title: "Producto creado!",
+          text: `El producto ${producto.nombreProducto} fue creado correctamente`,
+          icon: "success"
+        });
+        reset();
+      }else{
+        Swal.fire({
+          title: "Error!",
+          text: `El producto no fue creado, intente nuevamente más tarde`,
+          icon: "error"
+        });
+      }
+    })
   }
 
   return (
@@ -25,7 +42,7 @@ const CrearProducto = () => {
               <span className="estilo-form">Nombre</span>
             </Form.Label>
             <Form.Control type="text" placeholder="Nombre"
-            {...register("nombre", {
+            {...register("nombreProducto", {
               required: "El nombre es un dato obligatorio",
               minLength: {
                 value: 2,

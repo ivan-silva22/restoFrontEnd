@@ -7,6 +7,22 @@
       "precio": 4000,
       "imagen": "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg",
       "categoria": "Clasicas"
+    },
+    {
+      "id": "3153",
+      "nombreProducto": "Gaseosa 1L",
+      "descripcion": "Gaseosa Coca-Cola",
+      "precio": "2500",
+      "imagen": "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg",
+      "categoria": "Vegana"
+    },
+    {
+      "id": "0d0e",
+      "nombreProducto": "Pizza Muzzarella",
+      "descripcion": "aqui van los ingredientes",
+      "precio": "4500",
+      "imagen": "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg",
+      "categoria": "Clasicas"
     }
   ],
   "usuarios": [
