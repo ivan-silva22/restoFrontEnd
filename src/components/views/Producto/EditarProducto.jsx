@@ -1,14 +1,32 @@
+import { useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { consultaObtenerProducto } from "../../helpers/helpers";
+import { useParams } from "react-router-dom";
 
 const EditarProducto = () => {
+
+  const {id} = useParams();
 
   const {
     register,
     handleSubmit,
     formState: {errors},
     reset,
+    setValue,
   } = useForm();
+
+  useEffect(()=>{
+    consultaObtenerProducto(id).then((respuesta)=>{
+      if(respuesta){
+        setValue("nombreProducto", respuesta.nombreProducto);
+        setValue("descripcion", respuesta.descripcion);
+        setValue("precio", respuesta.precio);
+        setValue("imagen", respuesta.imagen);
+        setValue("categoria", respuesta.categoria);
+      }
+    })
+  },[])
 
   const onSubmit = (producto) =>{
     console.log(producto)
@@ -23,7 +41,7 @@ const EditarProducto = () => {
           <Form.Group className="mb-3" controlId="nombre">
             <Form.Label><span className="estilo-form">Nombre</span></Form.Label>
             <Form.Control type="text" placeholder="Nombre"
-             {...register("nombre", {
+             {...register("nombreProducto", {
               required: "El nombre es un dato obligatorio",
               minLength: {
                 value: 2,

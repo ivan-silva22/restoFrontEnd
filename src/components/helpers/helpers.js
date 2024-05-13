@@ -60,3 +60,14 @@ export const consultaCrearProducto = async(producto)=>{
         return false;
     }
 }
+
+export const consultaObtenerProducto = async(id) =>{
+    try {
+        const respuesta = await fetch(`${URLProducto}/${id}`);
+        const producto = respuesta.json();
+        return producto;
+    } catch (error) {
+        console.log(error)
+        return false;
+    }
+}

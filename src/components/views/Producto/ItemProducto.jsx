@@ -48,7 +48,7 @@ const ItemProducto = ({ producto, indice, setProductos }) => {
       <td className="text-center">
         <Link
           className="btn btn-warning me-1"
-          to={"/administrador/editarproducto"}
+          to={"/administrador/editarproducto/" + producto.id}
         >
           Editar
         </Link>
