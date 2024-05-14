@@ -72,8 +72,8 @@ const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
         <hr />
         <Row>
           {productos.map((producto) => (
-            <Col key={producto.id} className="mt-2">
-              <Card style={{ width: "18rem" }}>
+            <Col key={producto.id} className=" mt-2">
+              <Card style={{ width: "18rem" }} className="mx-auto">
                 <Card.Img variant="top" src={producto.imagen} />
                 <Card.Body>
                   <Card.Title>{producto.nombreProducto}</Card.Title>
@@ -145,9 +145,9 @@ const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
         <section className="mt-4">
           <h2 className="text-center">Testimonios</h2>
           <hr />
-          <Row className="mx-5">
-            <Col className="col-md-4 col-sm-12 text-center">
-              <Card className="card-testimonio pb-4">
+          <Row className="">
+            <Col className="text-center mt-2">
+              <Card className="card-testimonio mx-auto">
                 <img className="img-avatar" src={avatar_1} alt="" />
                 <Card.Body>
                   <Card.Title className="texto">Juan Pérez</Card.Title>
@@ -159,8 +159,8 @@ const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col className="col-md-4 col-sm-12 text-center">
-              <Card className="card-testimonio pb-4">
+            <Col className="text-center mt-2">
+              <Card className="card-testimonio mx-auto">
                 <img className="img-avatar" src={avatar_2} alt="" />
                 <Card.Body>
                   <Card.Title className="texto">Facundo Fernandez</Card.Title>
@@ -172,8 +172,8 @@ const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col className="col-md-4 col-sm-12 text-center">
-              <Card className="card-testimonio">
+            <Col className="text-center mt-2">
+              <Card className="card-testimonio mx-auto">
                 <img className="img-avatar" src={avatar_3} alt="" />
                 <Card.Body>
                   <Card.Title className="texto">María García</Card.Title>
@@ -191,13 +191,14 @@ const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
           <h2 className="text-center">Horarios de trabajo</h2>
           <hr />
           <Row className="text-center">
-            <Col className="col-md-6 col-sm-12">
+            <Col className="col-md-6 col-sm-12 mt-2">
               <div>
-                <img className="me-2" src={horarios} alt="Horarios" />
-                <img src={horarios_} alt="Horarios" />
+                <div>
+                <img className="rounded" src={horarios} alt="Horarios" />
+                </div>
               </div>
             </Col>
-            <Col className="col-md-6 col-sm-12">
+            <Col className="col-md-6 col-sm-12 mt-2">
               <h4 className="texto">
                 Lunes - Sábados:
                 <span className="text-secondary"> 7:00 am - 12 pm</span>
