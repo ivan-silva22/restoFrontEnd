@@ -1,5 +1,6 @@
 const URLUsuario = import.meta.env.VITE_API_USUARIO;
 const URLProducto = import.meta.env.VITE_API_PRODUCTO;
+const URLPedido = import.meta.env.VITE_API_PEDIDO;
 
 export const login = async (usuario) => {
   console.log(usuario);
@@ -90,30 +91,65 @@ export const consultaEditarProducto = async (producto, codigo) => {
   }
 };
 
+export const consultaCrearUsuario = async (usuario) => {
+  try {
+    const respuesta = await fetch(URLUsuario, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
 
-export const consultaCrearUsuario = async(usuario)=>{
-    try {
-      const respuesta = await fetch(URLUsuario,{
-        method: "POST",
-        headers:{
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(usuario),
-      });
-      return respuesta; 
-    } catch (error) {
-        console.log(error)
-        return false;
-    }
-}
+export const consultaListaUsuarios = async () => {
+  try {
+    const respuesta = await fetch(URLUsuario);
+    const listaDeUsuarios = await respuesta.json();
+    return listaDeUsuarios;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
 
-export const consultaListaUsuarios = async()=>{
-    try {
-      const respuesta = await fetch(URLUsuario);
-      const listaDeUsuarios = await respuesta.json();
-      return listaDeUsuarios;
-    } catch (error) {
-        console.log(error)
-        return false;
-    }
+export const consultaCrearPedidos = async (producto) => {
+  try {
+    const respuesta = await fetch(URLPedido, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(producto),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
+
+export const  agregarAlCarrito =(setCarrito, carrito, producto)=>{
+  const existe = carrito.filter((item)=> item.id === producto.id)[0];
+  if(!existe){
+    producto.cantidad = 1;
+    const nuevoCarrito = [...carrito, producto];
+    setCarrito(nuevoCarrito);
+  }else{
+    const nuevoCarrito = carrito.map((item)=>{
+      if(item.id === producto.id){
+        producto.cantidad += 1; 
+        return item;
+      }
+      return item;
+    })
+    setCarrito(nuevoCarrito);
+  }
+
 }

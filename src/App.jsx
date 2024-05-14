@@ -17,7 +17,11 @@ import RutasAdmin from "./components/Routes/RutasAdmin";
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem("usuario")) || {};
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
-   
+  const [carrito, setCarrito] = useState([]);
+  const [producto, setProducto] = useState({});
+
+ 
+ 
 
   return (
     <>
@@ -27,7 +31,18 @@ function App() {
           setUsuarioLogueado={setUsuarioLogueado}
         />
         <Routes>
-          <Route exact path="/" element={<Inicio usuarioLogueado={usuarioLogueado}/>} />
+          <Route
+            exact
+            path="/"
+            element={
+              <Inicio
+                usuarioLogueado={usuarioLogueado}
+                carrito={carrito}
+                setCarrito={setCarrito}
+                setProducto={setProducto}
+              />
+            }
+          />
           <Route exact path="/registro" element={<Registro />} />
           <Route
             exact
@@ -36,7 +51,16 @@ function App() {
           />
           <Route exact path="/detalle/:id" element={<DetalleProducto />} />
           <Route exact path="/acercade" element={<AcercaDe />} />
-          <Route exact path="/pedidos" element={<Pedidos />} />
+          <Route
+            exact
+            path="/pedidos"
+            element={
+              <Pedidos
+                carrito={carrito}
+                setCarrito={setCarrito}
+              />
+            }
+          />
           <Route
             path="/administrador/*"
             element={

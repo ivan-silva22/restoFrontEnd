@@ -12,10 +12,13 @@ import horarios from "../../assets/horarios.jpg";
 import horarios_ from "../../assets/horario_.jpg";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
-import { consultaListaProductos } from "../helpers/helpers";
+import {
+  agregarAlCarrito,
+  consultaListaProductos,
+} from "../helpers/helpers";
 import { Link } from "react-router-dom";
 
-const Inicio = ({ usuarioLogueado }) => {
+const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
@@ -32,8 +35,15 @@ const Inicio = ({ usuarioLogueado }) => {
     });
   }, []);
 
-  const pedidos = () => {
+  const handlePedidos = (producto) => {
     if (usuarioLogueado.hasOwnProperty("nombreUsuario")) {
+      Swal.fire({
+        title: "Producto agregado",
+        text: "El producto se agrego correctamente a la sección 'Pedidos'",
+        icon: "success",
+        confirmButtonColor: "#bc8c4c",
+      });
+      agregarAlCarrito(setCarrito, carrito, producto);
     } else {
       Swal.fire({
         title: "Error",
@@ -64,15 +74,22 @@ const Inicio = ({ usuarioLogueado }) => {
           {productos.map((producto) => (
             <Col key={producto.id} className="mt-2">
               <Card style={{ width: "18rem" }}>
-                <Card.Img
-                  variant="top"
-                  src={producto.imagen}
-                />
+                <Card.Img variant="top" src={producto.imagen} />
                 <Card.Body>
                   <Card.Title>{producto.nombreProducto}</Card.Title>
                   <Card.Text>{producto.descripcion}</Card.Text>
-                  <Link className="btn bg-btn me-2" to={'/detalle/' + producto.id}>Ver detalle</Link>
-                  <button className="btn bg-btn" onClick={pedidos}>
+                  <Link
+                    className="btn bg-btn me-2"
+                    to={"/detalle/" + producto.id}
+                  >
+                    Ver detalle
+                  </Link>
+                  <button
+                    className="btn bg-btn"
+                    onClick={() =>
+                      handlePedidos(producto)
+                    }
+                  >
                     Realizar pedido
                   </button>
                 </Card.Body>

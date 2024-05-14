@@ -49,10 +49,23 @@
   "pedidos": [
     {
       "id": "1",
-      "usuario": "juan",
+      "nombreUsuario": "juan",
       "fecha": "12/05/2024",
-      "productos": "Pizza",
+      "productos": [
+        "Pizza",
+        "Gaseosa"
+      ],
+      "estado": "pendiente"
+    },
+    {
+      "id": "d2bb",
+      "nombreUsuario": "Ivan",
+      "fecha": "13/5/2024",
+      "productos": [
+        "Calzon"
+      ],
       "estado": "pendiente"
     }
+    
   ]
 }
