@@ -48,24 +48,32 @@
   ],
   "pedidos": [
     {
-      "id": "1",
-      "nombreUsuario": "juan",
-      "fecha": "12/05/2024",
-      "productos": [
-        "Pizza",
-        "Gaseosa"
-      ],
-      "estado": "pendiente"
-    },
-    {
-      "id": "d2bb",
+      "id": "38b5",
       "nombreUsuario": "Ivan",
       "fecha": "13/5/2024",
       "productos": [
-        "Calzon"
+        {
+          "id": "1",
+          "nombreProducto": "Calzon",
+          "cantidad": 2
+        }
       ],
-      "estado": "pendiente"
+      "estado": "Pendiente",
+      "total": 8000
+    },
+    {
+      "id": "1e7b",
+      "nombreUsuario": "Ivan",
+      "fecha": "13/5/2024",
+      "productos": [
+        {
+          "id": "3153",
+          "nombreProducto": "Gaseosa 2.5L",
+          "cantidad": 1
+        }
+      ],
+      "estado": "Pendiente",
+      "total": 3000
     }
-    
   ]
 }

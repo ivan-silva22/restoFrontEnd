@@ -118,23 +118,6 @@ export const consultaListaUsuarios = async () => {
   }
 };
 
-export const consultaCrearPedidos = async (producto) => {
-  try {
-    const respuesta = await fetch(URLPedido, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(producto),
-    });
-    return respuesta;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
-};
-
-
 export const  agregarAlCarrito =(setCarrito, carrito, producto)=>{
   const existe = carrito.filter((item)=> item.id === producto.id)[0];
   if(!existe){
@@ -152,4 +135,57 @@ export const  agregarAlCarrito =(setCarrito, carrito, producto)=>{
     setCarrito(nuevoCarrito);
   }
 
+}
+
+export const fechaPedido = (fecha)=>{
+  const dia = new Date().getDate();
+  const mes = new Date().getMonth() + 1;
+  const anio = new Date().getFullYear();
+  return `${dia}/${mes}/${anio}`
+}
+
+export const consultaCrearPedidos = async (carrito, total, usuarioLogueado) => {
+  const fechaDelPedido = new Date();
+  let pedidoCliente = {
+    nombreUsuario: usuarioLogueado.nombreUsuario,
+    fecha: fechaPedido(fechaDelPedido),
+    productos: carrito.map((producto)=>(
+      {
+        id: producto.id,
+        nombreProducto: producto.nombreProducto,
+        cantidad: producto.cantidad
+      }
+    )),
+    estado: "Pendiente",
+    total: total,
+  } 
+  try {
+    const respuesta = await fetch(URLPedido, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(pedidoCliente),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
+export const totalCarrito =(carrito, setTotal)=>{
+  const totalCarrito = carrito.reduce((total, item)=> total + (item.precio * item.cantidad),0);
+  setTotal(totalCarrito);
+}
+
+export const consultaListaPedidos = async()=>{
+  try {
+    const respuesta = await fetch(URLPedido);
+    const listaDePedidos = await respuesta.json();
+    return listaDePedidos;
+  } catch (error) {
+    console.log(error)
+    return false;
+  }
 }

@@ -1,8 +1,22 @@
 import { Container, Table } from "react-bootstrap";
 import ItemPedidos from "./Pedidos/ItemPedidos";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { consultaListaPedidos } from "../helpers/helpers";
 
 const AdminPedidos = () => {
+  const [pedidos, setPedidos] = useState([]);
+
+  useEffect(() => {
+    consultaListaPedidos().then((respuesta) => {
+      if (respuesta) {
+        setPedidos(respuesta);
+      } else {
+        console.log("mesaje");
+      }
+    });
+  }, []);
+
   return (
     <main className="main my-4">
       <Container className="my-5">
@@ -15,10 +29,16 @@ const AdminPedidos = () => {
             <Link className="btn bg-btn" to={"/administrador"}>
               Productos
             </Link>
-            <Link className="btn bg-btn mx-3" to={"/administrador/administradorusuarios"}>
+            <Link
+              className="btn bg-btn mx-3"
+              to={"/administrador/administradorusuarios"}
+            >
               Usuarios
             </Link>
-            <Link className="btn bg-btn" to={"/administrador/administradorpedidos"}>
+            <Link
+              className="btn bg-btn"
+              to={"/administrador/administradorpedidos"}
+            >
               Pedidos
             </Link>
           </div>
@@ -33,7 +53,9 @@ const AdminPedidos = () => {
               </tr>
             </thead>
             <tbody>
-              <ItemPedidos></ItemPedidos>
+              {pedidos.map((pedido, indice) => (
+                <ItemPedidos pedido={pedido} key={pedido.id} indice={indice} ></ItemPedidos>
+              ))}
             </tbody>
           </Table>
         </section>

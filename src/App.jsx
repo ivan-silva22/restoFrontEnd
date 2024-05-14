@@ -58,6 +58,7 @@ function App() {
               <Pedidos
                 carrito={carrito}
                 setCarrito={setCarrito}
+                usuarioLogueado={usuarioLogueado}
               />
             }
           />
