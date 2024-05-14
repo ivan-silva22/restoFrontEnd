@@ -3,14 +3,13 @@ import logo from "../../assets/logo.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
-
   const navegacion = useNavigate();
 
-  const logout = () =>{
-   setUsuarioLogueado({});
-   sessionStorage.removeItem('usuario');
-   navegacion('/');
-  }
+  const logout = () => {
+    setUsuarioLogueado({});
+    sessionStorage.removeItem("usuario");
+    navegacion("/");
+  };
 
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
@@ -32,16 +31,30 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
             </NavLink>
             {usuarioLogueado.nombreUsuario ? (
               <>
-                <NavLink
-                  end
-                  className={"nav-item nav-link"}
-                  to="/administrador"
-                >
-                  Administrador
-                </NavLink>
-                <div>
-                <button className={"nav-item nav-link"} onClick={logout}>Cerrar sesión</button>
-                </div>
+                {usuarioLogueado.rol === "administrador" ? (
+                  <>
+                    <NavLink
+                      end
+                      className={"nav-item nav-link"}
+                      to="/administrador"
+                    >
+                      Administrador
+                    </NavLink>
+                    <div>
+                      <button className={"nav-item nav-link"} onClick={logout}>
+                        Cerrar sesión
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      <button className={"nav-item nav-link"} onClick={logout}>
+                        Cerrar sesión
+                      </button>
+                    </div>
+                  </>
+                )}
               </>
             ) : (
               <>
