@@ -42,7 +42,7 @@ function App() {
               />
             }
           />
-          <Route exact path="/registro" element={<Registro />} />
+          <Route exact path="/registro" element={<Registro setUsuarioLogueado={setUsuarioLogueado} />} />
           <Route
             exact
             path="/login"

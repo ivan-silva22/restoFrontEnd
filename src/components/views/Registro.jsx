@@ -4,7 +4,7 @@ import { consultaCrearUsuario } from "../helpers/helpers";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const Registro = () => {
+const Registro = ({setUsuarioLogueado}) => {
   const navegacion = useNavigate();
 
   const {
@@ -16,19 +16,19 @@ const Registro = () => {
 
   const onSubmit = (usuario) => {
     consultaCrearUsuario(usuario).then((respuesta) => {
+      const nuevoUsuario = {
+        rol: 'Cliente',
+        nombreUsuario: usuario.nombreUsuario,
+      };
       if(respuesta){
-        Swal.fire({
-          title: "Usuario creado!",
-          text: `El usuario fue creado correctamente, ahora puedes iniciar sesion`,
-          icon: "success"
-        });
-        navegacion('/login');
+        sessionStorage.setItem('usuario', JSON.stringify(nuevoUsuario));
+        Swal.fire("Exito!", `Usuario creado con exito`, "success");
+        setUsuarioLogueado(nuevoUsuario);
+        navegacion('/')
+      }else if(respuesta === null){
+        Swal.fire("Error", "El usuario o email ya existe", "error");
       }else{
-        Swal.fire({
-          title: "Erro!",
-          text: `El usuario no fue creado correctamente, intente nuevamente más tarde`,
-          icon: "error"
-        });
+        Swal.fire("Error", "No se puede registrar, intente nuevamente más tarde", "error");
       }
     });
   };
@@ -57,7 +57,7 @@ const Registro = () => {
               })}
             />
             <Form.Text className="text-danger">
-              {errors.nombre?.message}
+              {errors.nombreUsuario?.message}
             </Form.Text>
           </Form.Group>
           <Form.Group className="mb-3" controlId="email">

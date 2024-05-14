@@ -93,14 +93,26 @@ export const consultaEditarProducto = async (producto, codigo) => {
 
 export const consultaCrearUsuario = async (usuario) => {
   try {
-    const respuesta = await fetch(URLUsuario, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(usuario),
-    });
-    return respuesta;
+    const listaDeUsuarios = await fetch(URLUsuario);
+    const arrayDeUsuarios = await listaDeUsuarios.json();
+    const usuarioExiste = arrayDeUsuarios.find(
+      (item) =>
+        item.nombreUsuario === usuario.nombreUsuario ||
+        item.email === usuario.email
+    );
+    if(!usuarioExiste){
+      const respuesta = await fetch(URLUsuario,{
+        method: "POST",
+        headers:{
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(usuario),
+      });
+      const data = respuesta.json();
+      return data;
+    }else{
+      return null;
+    }
   } catch (error) {
     console.log(error);
     return false;
@@ -118,47 +130,44 @@ export const consultaListaUsuarios = async () => {
   }
 };
 
-export const  agregarAlCarrito =(setCarrito, carrito, producto)=>{
-  const existe = carrito.filter((item)=> item.id === producto.id)[0];
-  if(!existe){
+export const agregarAlCarrito = (setCarrito, carrito, producto) => {
+  const existe = carrito.filter((item) => item.id === producto.id)[0];
+  if (!existe) {
     producto.cantidad = 1;
     const nuevoCarrito = [...carrito, producto];
     setCarrito(nuevoCarrito);
-  }else{
-    const nuevoCarrito = carrito.map((item)=>{
-      if(item.id === producto.id){
-        producto.cantidad += 1; 
+  } else {
+    const nuevoCarrito = carrito.map((item) => {
+      if (item.id === producto.id) {
+        producto.cantidad += 1;
         return item;
       }
       return item;
-    })
+    });
     setCarrito(nuevoCarrito);
   }
+};
 
-}
-
-export const fechaPedido = (fecha)=>{
+export const fechaPedido = (fecha) => {
   const dia = new Date().getDate();
   const mes = new Date().getMonth() + 1;
   const anio = new Date().getFullYear();
-  return `${dia}/${mes}/${anio}`
-}
+  return `${dia}/${mes}/${anio}`;
+};
 
 export const consultaCrearPedidos = async (carrito, total, usuarioLogueado) => {
   const fechaDelPedido = new Date();
   let pedidoCliente = {
     nombreUsuario: usuarioLogueado.nombreUsuario,
     fecha: fechaPedido(fechaDelPedido),
-    productos: carrito.map((producto)=>(
-      {
-        id: producto.id,
-        nombreProducto: producto.nombreProducto,
-        cantidad: producto.cantidad
-      }
-    )),
+    productos: carrito.map((producto) => ({
+      id: producto.id,
+      nombreProducto: producto.nombreProducto,
+      cantidad: producto.cantidad,
+    })),
     estado: "Pendiente",
     total: total,
-  } 
+  };
   try {
     const respuesta = await fetch(URLPedido, {
       method: "POST",
@@ -174,27 +183,30 @@ export const consultaCrearPedidos = async (carrito, total, usuarioLogueado) => {
   }
 };
 
-export const totalCarrito =(carrito, setTotal)=>{
-  const totalCarrito = carrito.reduce((total, item)=> total + (item.precio * item.cantidad),0);
+export const totalCarrito = (carrito, setTotal) => {
+  const totalCarrito = carrito.reduce(
+    (total, item) => total + item.precio * item.cantidad,
+    0
+  );
   setTotal(totalCarrito);
-}
+};
 
-export const consultaListaPedidos = async()=>{
+export const consultaListaPedidos = async () => {
   try {
     const respuesta = await fetch(URLPedido);
     const listaDePedidos = await respuesta.json();
     return listaDePedidos;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return false;
   }
-}
+};
 
-export const consultaEditarEstadoPedido = async(estado, id)=>{
+export const consultaEditarEstadoPedido = async (estado, id) => {
   try {
-    const respuesta = await fetch(`${URLPedido}/${id}`,{
+    const respuesta = await fetch(`${URLPedido}/${id}`, {
       method: "PATCH",
-      headers:{
+      headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(estado),
@@ -204,16 +216,16 @@ export const consultaEditarEstadoPedido = async(estado, id)=>{
     console.log(error);
     return false;
   }
-}
+};
 
-export const consultaBorrarPedido = async(id)=>{
+export const consultaBorrarPedido = async (id) => {
   try {
-    const respuesta = await fetch(`${URLPedido}/${id}`,{
+    const respuesta = await fetch(`${URLPedido}/${id}`, {
       method: "DELETE",
     });
     return respuesta;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return false;
   }
-}
+};
