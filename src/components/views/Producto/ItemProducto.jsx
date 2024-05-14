@@ -10,7 +10,7 @@ const ItemProducto = ({ producto, indice, setProductos }) => {
       text: "No se puede revertir este proceso!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#bc8c4c",
       cancelButtonColor: "#d33",
       confirmButtonText: "Borrar",
       cancelButtonText: "Cancelar",
@@ -22,6 +22,7 @@ const ItemProducto = ({ producto, indice, setProductos }) => {
               title: "Producto eliminado!",
               text: `El ${producto.nombreProducto} fue eliminado correctamente.`,
               icon: "success",
+              confirmButtonColor: '#bc8c4c',
             });
             consultaListaProductos().then((respuesta) =>
               setProductos(respuesta)
@@ -31,6 +32,7 @@ const ItemProducto = ({ producto, indice, setProductos }) => {
               title: "Ocurrio un error!",
               text: `Intente realizar este proceso más tarde.`,
               icon: "error",
+              confirmButtonColor: '#bc8c4c',
             });
           }
         });

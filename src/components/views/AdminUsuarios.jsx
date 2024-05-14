@@ -13,7 +13,12 @@ const AdminUsuarios = () => {
       if (respuesta) {
         setUsuarios(respuesta);
       } else {
-        console.log("mesaje");
+        Swal.fire({
+          title: "Error",
+          text: "No se puede acceder a los usuarios, intente nuevamente más tarde.",
+          icon: "error",
+          confirmButtonColor: "#bc8c4c",
+        });
       }
     });
   }, []);

@@ -16,7 +16,7 @@ const Pedidos = ({ carrito, usuarioLogueado, setCarrito }) => {
         Swal.fire(
           "Pedido exitoso",
           "¡Tu pedido fue realizado y pronto llegará a tu mesa!",
-          "success"
+          "success",
         );
         setCarrito([]);
         navegacion("/");

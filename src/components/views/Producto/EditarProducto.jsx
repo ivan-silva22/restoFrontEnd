@@ -38,6 +38,7 @@ const EditarProducto = () => {
           title: "Producto Editado!",
           text: `El producto ${producto.nombreProducto} fue editado correctamente`,
           icon: "success",
+          confirmButtonColor: "#bc8c4c",
         });
         navegacion('/administrador');
       }else{
@@ -45,6 +46,7 @@ const EditarProducto = () => {
           title: "Error!",
           text: `El producto no fue editado, intente nuevamente más tarde`,
           icon: "error",
+          confirmButtonColor: "#bc8c4c",
         });
       }
     })

@@ -3,6 +3,7 @@ import ItemPedidos from "./Pedidos/ItemPedidos";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { consultaListaPedidos } from "../helpers/helpers";
+import Swal from "sweetalert2";
 
 const AdminPedidos = ({pedidos, setPedidos}) => {
 
@@ -11,7 +12,12 @@ const AdminPedidos = ({pedidos, setPedidos}) => {
       if (respuesta) {
         setPedidos(respuesta);
       } else {
-        console.log("mesaje");
+        Swal.fire({
+          title: "Error",
+          text: "No se puede acceder a los productos, intenete nuevamente más tarde",
+          icon: "error",
+          confirmButtonColor: "#bc8c4c",
+        });
       }
     });
   }, []);

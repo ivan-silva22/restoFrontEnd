@@ -18,14 +18,16 @@ const CrearProducto = () => {
         Swal.fire({
           title: "Producto creado!",
           text: `El producto ${producto.nombreProducto} fue creado correctamente`,
-          icon: "success"
+          icon: "success",
+          confirmButtonColor: "#bc8c4c",
         });
         reset();
       }else{
         Swal.fire({
           title: "Error!",
           text: `El producto no fue creado, intente nuevamente más tarde`,
-          icon: "error"
+          icon: "error",
+          confirmButtonColor: "#bc8c4c",
         });
       }
     })

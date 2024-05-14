@@ -18,8 +18,8 @@ const ItemPedidos = ({ pedido, indice, setPedidos }) => {
       text: "Una vez eliminado, no podrás recuperar este pedido.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#d96c06",
-      cancelButtonColor: "#3085d6",
+      confirmButtonColor: "#bc8c4c",
+      cancelButtonColor: "#d33",
       confirmButtonText: "Confirmar",
       cancelButtonText: "Cancelar",
     }).then((result) => {
@@ -29,7 +29,7 @@ const ItemPedidos = ({ pedido, indice, setPedidos }) => {
             Swal.fire(
               "Pedido Eliminado.",
               "El pedido fue eliminado correctamente.",
-              "success"
+              "success",
             );
             consultaListaPedidos().then((respuesta) => setPedidos(respuesta));
           })
