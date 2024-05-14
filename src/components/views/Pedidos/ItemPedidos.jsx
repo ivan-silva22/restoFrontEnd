@@ -1,4 +1,16 @@
+import { useState } from "react";
+import { consultaEditarEstadoPedido } from "../../helpers/helpers";
+
 const ItemPedidos = ({ pedido, indice }) => {
+  const [estado, setEstado] = useState(pedido.estado);
+
+  const cambiarEstado = () => {
+    const nuevoEstado = estado === "Pendiente" ? "Entregado" : "Pendiente";
+    consultaEditarEstadoPedido({ estado: nuevoEstado }, pedido.id).then(() => {
+      setEstado(nuevoEstado);
+    });
+  };
+
   return (
     <tr>
       <td>{indice + 1}</td>
@@ -12,9 +24,16 @@ const ItemPedidos = ({ pedido, indice }) => {
           ))}
         </ul>
       </td>
-      <td>{pedido.estado}</td>
+      <td>{estado}</td>
       <td className="text-center">
-        <button className="btn btn-warning">Cambiar estado</button>
+        {estado !== "Entregado" && (
+          <>
+            <button className="btn btn-warning" onClick={cambiarEstado}>
+              {estado === "Pendiente" ? "Confirmar" : "Cancelar"}
+            </button>
+            <button className="btn btn-danger">Eliminar</button>
+          </>
+        )}
       </td>
     </tr>
   );

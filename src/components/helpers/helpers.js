@@ -189,3 +189,19 @@ export const consultaListaPedidos = async()=>{
     return false;
   }
 }
+
+export const consultaEditarEstadoPedido = async(estado, id)=>{
+  try {
+    const respuesta = await fetch(`${URLPedido}/${id}`,{
+      method: "PATCH",
+      headers:{
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(estado),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
