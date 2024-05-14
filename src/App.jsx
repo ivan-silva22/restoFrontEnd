@@ -19,7 +19,6 @@ function App() {
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
   const [carrito, setCarrito] = useState([]);
   const [pedidos, setPedidos] = useState([]);
-  const [producto, setProducto] = useState({});
 
  
  
@@ -40,7 +39,6 @@ function App() {
                 usuarioLogueado={usuarioLogueado}
                 carrito={carrito}
                 setCarrito={setCarrito}
-                setProducto={setProducto}
               />
             }
           />
