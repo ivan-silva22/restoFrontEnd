@@ -48,9 +48,9 @@
   ],
   "pedidos": [
     {
-      "id": "38b5",
+      "id": "5f74",
       "nombreUsuario": "Ivan",
-      "fecha": "13/5/2024",
+      "fecha": "14/5/2024",
       "productos": [
         {
           "id": "1",
@@ -60,20 +60,6 @@
       ],
       "estado": "Entregado",
       "total": 8000
-    },
-    {
-      "id": "1e7b",
-      "nombreUsuario": "Ivan",
-      "fecha": "13/5/2024",
-      "productos": [
-        {
-          "id": "3153",
-          "nombreProducto": "Gaseosa 2.5L",
-          "cantidad": 1
-        }
-      ],
-      "estado": "Pendiente",
-      "total": 3000
     }
   ]
 }

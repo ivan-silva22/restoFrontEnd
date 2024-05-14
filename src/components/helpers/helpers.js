@@ -205,3 +205,15 @@ export const consultaEditarEstadoPedido = async(estado, id)=>{
     return false;
   }
 }
+
+export const consultaBorrarPedido = async(id)=>{
+  try {
+    const respuesta = await fetch(`${URLPedido}/${id}`,{
+      method: "DELETE",
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error)
+    return false;
+  }
+}

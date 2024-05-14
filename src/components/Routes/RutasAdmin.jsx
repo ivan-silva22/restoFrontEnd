@@ -5,7 +5,7 @@ import AdminPedidos from "../views/AdminPedidos";
 import CrearProducto from "../views/Producto/CrearProducto";
 import EditarProducto from "../views/Producto/EditarProducto";
 
-const RutasAdmin = () => {
+const RutasAdmin = ({ pedidos ,setPedidos}) => {
   return (
     <>
       <Routes>
@@ -19,7 +19,7 @@ const RutasAdmin = () => {
           path="/administradorusuarios"
           element={<AdminUsuarios />}
         />
-        <Route exact path="/administradorpedidos" element={<AdminPedidos />} />
+        <Route exact path="/administradorpedidos" element={<AdminPedidos pedidos={pedidos} setPedidos={setPedidos} />} />
         <Route exact path="/crearproducto" element={<CrearProducto />} />
         <Route exact path="/editarproducto/:id" element={<EditarProducto />} />
       </Routes>

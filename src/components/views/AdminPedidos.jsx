@@ -1,11 +1,10 @@
 import { Container, Table } from "react-bootstrap";
 import ItemPedidos from "./Pedidos/ItemPedidos";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { consultaListaPedidos } from "../helpers/helpers";
 
-const AdminPedidos = () => {
-  const [pedidos, setPedidos] = useState([]);
+const AdminPedidos = ({pedidos, setPedidos}) => {
 
   useEffect(() => {
     consultaListaPedidos().then((respuesta) => {
@@ -54,7 +53,7 @@ const AdminPedidos = () => {
             </thead>
             <tbody>
               {pedidos.map((pedido, indice) => (
-                <ItemPedidos pedido={pedido} key={pedido.id} indice={indice} ></ItemPedidos>
+                <ItemPedidos pedido={pedido} key={pedido.id} indice={indice} setPedidos={setPedidos} ></ItemPedidos>
               ))}
             </tbody>
           </Table>

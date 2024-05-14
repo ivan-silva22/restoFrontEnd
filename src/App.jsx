@@ -18,6 +18,7 @@ function App() {
   const usuario = JSON.parse(sessionStorage.getItem("usuario")) || {};
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
   const [carrito, setCarrito] = useState([]);
+  const [pedidos, setPedidos] = useState([]);
   const [producto, setProducto] = useState({});
 
  
@@ -66,7 +67,7 @@ function App() {
             path="/administrador/*"
             element={
               <RutasProtegidas>
-                <RutasAdmin></RutasAdmin>
+                <RutasAdmin pedidos={pedidos} setPedidos={setPedidos} ></RutasAdmin>
               </RutasProtegidas>
             }
           />
