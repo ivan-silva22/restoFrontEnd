@@ -130,14 +130,14 @@ export const consultaListaUsuarios = async () => {
 };
 
 export const agregarAlCarrito = (setCarrito, carrito, producto) => {
-  const existe = carrito.filter((item) => item.id === producto._id)[0];
+  const existe = carrito.filter((item) => item._id === producto._id)[0];
   if (!existe) {
     producto.cantidad = 1;
     const nuevoCarrito = [...carrito, producto];
     setCarrito(nuevoCarrito);
   } else {
     const nuevoCarrito = carrito.map((item) => {
-      if (item.id === producto._id) {
+      if (item._id === producto._id) {
         producto.cantidad += 1;
         return item;
       }
@@ -157,15 +157,15 @@ export const fechaPedido = (fecha) => {
 export const consultaCrearPedidos = async (carrito, total, usuarioLogueado) => {
   const fechaDelPedido = new Date();
   let pedidoCliente = {
-    nombreUsuario: usuarioLogueado.nombreUsuario,
-    fecha: fechaPedido(fechaDelPedido),
     productos: carrito.map((producto) => ({
-      id: producto._id,
-      nombreProducto: producto.nombreProducto,
+      id: producto.nombreProducto._id,
+      nombreProducto: producto.producto.nombreProducto,
       cantidad: producto.cantidad,
     })),
+    nombreUsuario: usuarioLogueado.nombreUsuario,
     estado: "Pendiente",
     total: total,
+    fecha: fechaPedido(fechaDelPedido),
   };
   try {
     const respuesta = await fetch(URLPedido + "/pedidos", {
@@ -203,8 +203,8 @@ export const consultaListaPedidos = async () => {
 
 export const consultaEditarEstadoPedido = async (estado, id) => {
   try {
-    const respuesta = await fetch(`${URLPedido}/${id}`, {
-      method: "PATCH",
+    const respuesta = await fetch(URLPedido + "/pedido" + "/" + id, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -219,7 +219,7 @@ export const consultaEditarEstadoPedido = async (estado, id) => {
 
 export const consultaBorrarPedido = async (id) => {
   try {
-    const respuesta = await fetch(`${URLPedido}/${id}`, {
+    const respuesta = await fetch(URLPedido + "/pedido" + "/" + id, {
       method: "DELETE",
     });
     return respuesta;
