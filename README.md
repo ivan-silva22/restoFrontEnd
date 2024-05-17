@@ -20,7 +20,9 @@
  * [SWEET-ALERT](https://sweetalert2.github.io/)
  * [REACT-HOOK-FORM](https://react-hook-form.com/)
 
-
+## Credenciales del administrador
+ * Email: admin@gmail.com
+ * Contraseña: Admin2024@
 
 ## Como utilizar este repositorio
  En la terminal debes usar los siguientes comandos
