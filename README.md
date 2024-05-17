@@ -4,6 +4,7 @@
  Proyecto FrontEnd para el curso de FullStack de Rolling Code School, este sitio web es de un restaurante de pizzas, donde se puede implementar un CRUD (crear, leer, actualizar y eliminar) productos en una base de datos, donde el usuario una vez que se registre puede relizar pedidos.
 
 ## Link del proyecto
+ * [pizzeria sabores](https://pizzeriasabores.netlify.app/)
 
 ## Repositorio BackEnd
 
