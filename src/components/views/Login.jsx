@@ -17,7 +17,7 @@ const Login = ({setUsuarioLogueado}) => {
 
   const onSubmit = (usuario) =>{
     login(usuario).then((respuesta)=>{
-      if(respuesta){
+      if(respuesta && respuesta.status === 200){
         sessionStorage.setItem('usuario', JSON.stringify(respuesta));
         Swal.fire({
           title: "Bienvenido",

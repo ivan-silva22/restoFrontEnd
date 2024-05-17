@@ -5,20 +5,18 @@ const URLPedido = import.meta.env.VITE_API_PEDIDO;
 export const login = async (usuario) => {
   console.log(usuario);
   try {
-    const respuesta = await fetch(URLUsuario);
-    const listaUsuarios = await respuesta.json();
-    const usuarioBuscado = listaUsuarios.find(
-      (itemUsuario) => itemUsuario.email === usuario.email
-    );
-    if (usuarioBuscado) {
-      if (usuarioBuscado.password === usuario.password) {
-        console.log("email y password correctos");
-        return usuarioBuscado;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
+    const respuesta = await fetch(URLUsuario + "/login",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario)
+    });
+    const datos = await respuesta.json();
+    return {
+      status: respuesta.status,
+      nombreUsuario: datos.nombreUsuario,
+      rol: datos.rol,
     }
   } catch (error) {
     console.log(error);
@@ -93,7 +91,8 @@ export const consultaEditarProducto = async (producto, codigo) => {
 
 export const consultaCrearUsuario = async (usuario) => {
   try {
-    const listaDeUsuarios = await fetch(URLUsuario);
+    const listaDeUsuarios = await fetch(URLUsuario + "/usuarios");
+    console.log(listaDeUsuarios)
     const arrayDeUsuarios = await listaDeUsuarios.json();
     const usuarioExiste = arrayDeUsuarios.find(
       (item) =>
@@ -101,7 +100,7 @@ export const consultaCrearUsuario = async (usuario) => {
         item.email === usuario.email
     );
     if(!usuarioExiste){
-      const respuesta = await fetch(URLUsuario,{
+      const respuesta = await fetch(URLUsuario + "/registro",{
         method: "POST",
         headers:{
           "Content-Type": "application/json",
@@ -121,7 +120,7 @@ export const consultaCrearUsuario = async (usuario) => {
 
 export const consultaListaUsuarios = async () => {
   try {
-    const respuesta = await fetch(URLUsuario);
+    const respuesta = await fetch(URLUsuario + "/usuarios");
     const listaDeUsuarios = await respuesta.json();
     return listaDeUsuarios;
   } catch (error) {
@@ -131,14 +130,14 @@ export const consultaListaUsuarios = async () => {
 };
 
 export const agregarAlCarrito = (setCarrito, carrito, producto) => {
-  const existe = carrito.filter((item) => item.id === producto.id)[0];
+  const existe = carrito.filter((item) => item.id === producto._id)[0];
   if (!existe) {
     producto.cantidad = 1;
     const nuevoCarrito = [...carrito, producto];
     setCarrito(nuevoCarrito);
   } else {
     const nuevoCarrito = carrito.map((item) => {
-      if (item.id === producto.id) {
+      if (item.id === producto._id) {
         producto.cantidad += 1;
         return item;
       }
@@ -161,7 +160,7 @@ export const consultaCrearPedidos = async (carrito, total, usuarioLogueado) => {
     nombreUsuario: usuarioLogueado.nombreUsuario,
     fecha: fechaPedido(fechaDelPedido),
     productos: carrito.map((producto) => ({
-      id: producto.id,
+      id: producto._id,
       nombreProducto: producto.nombreProducto,
       cantidad: producto.cantidad,
     })),
@@ -169,7 +168,7 @@ export const consultaCrearPedidos = async (carrito, total, usuarioLogueado) => {
     total: total,
   };
   try {
-    const respuesta = await fetch(URLPedido, {
+    const respuesta = await fetch(URLPedido + "/pedidos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -193,7 +192,7 @@ export const totalCarrito = (carrito, setTotal) => {
 
 export const consultaListaPedidos = async () => {
   try {
-    const respuesta = await fetch(URLPedido);
+    const respuesta = await fetch(URLPedido + "/pedidos");
     const listaDePedidos = await respuesta.json();
     return listaDePedidos;
   } catch (error) {

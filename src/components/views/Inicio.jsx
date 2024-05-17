@@ -72,15 +72,14 @@ const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
         <hr />
         <Row>
           {productos.map((producto) => (
-            <Col key={producto.id} className=" mt-2">
-              <Card style={{ width: "18rem" }} className="mx-auto">
-                <Card.Img variant="top" src={producto.imagen} />
+            <Col key={producto._id} className=" mt-2">
+              <Card className="mx-auto card-w  p-2">
+                <Card.Img className="card-img" variant="top" src={producto.imagen} />
                 <Card.Body>
                   <Card.Title>{producto.nombreProducto}</Card.Title>
-                  <Card.Text>{producto.descripcion}</Card.Text>
                   <Link
                     className="btn bg-btn me-2"
-                    to={"/detalle/" + producto.id}
+                    to={"/detalle/" + producto._id}
                   >
                     Ver detalle
                   </Link>

@@ -16,11 +16,12 @@ const Registro = ({setUsuarioLogueado}) => {
 
   const onSubmit = (usuario) => {
     consultaCrearUsuario(usuario).then((respuesta) => {
+      console.log(respuesta)
       const nuevoUsuario = {
-        rol: 'Cliente',
         nombreUsuario: usuario.nombreUsuario,
+        rol: 'Cliente',
       };
-      if(respuesta){
+      if(respuesta && respuesta.mensaje === "usuario creado"){
         sessionStorage.setItem('usuario', JSON.stringify(nuevoUsuario));
         Swal.fire("Exito!", `Usuario creado con exito`, "success");
         setUsuarioLogueado(nuevoUsuario);

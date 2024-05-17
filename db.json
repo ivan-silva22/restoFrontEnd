@@ -74,6 +74,20 @@
       ],
       "estado": "Entregado",
       "total": 4000
+    },
+    {
+      "id": "4508",
+      "nombreUsuario": "Ivan",
+      "fecha": "15/5/2024",
+      "productos": [
+        {
+          "id": "1",
+          "nombreProducto": "Calzon",
+          "cantidad": 1
+        }
+      ],
+      "estado": "Entregado",
+      "total": 4000
     }
   ]
 }

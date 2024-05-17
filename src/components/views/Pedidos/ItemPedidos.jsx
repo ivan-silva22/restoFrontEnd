@@ -7,7 +7,7 @@ const ItemPedidos = ({ pedido, indice, setPedidos }) => {
 
   const cambiarEstado = () => {
     const nuevoEstado = estado === "Pendiente" ? "Entregado" : "Pendiente";
-    consultaEditarEstadoPedido({ estado: nuevoEstado }, pedido.id).then(() => {
+    consultaEditarEstadoPedido({ estado: nuevoEstado }, pedido._id).then(() => {
       setEstado(nuevoEstado);
     });
   };
@@ -24,7 +24,7 @@ const ItemPedidos = ({ pedido, indice, setPedidos }) => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        consultaBorrarPedido(pedido.id)
+        consultaBorrarPedido(pedido._id)
           .then(() => {
             Swal.fire(
               "Pedido Eliminado.",
@@ -51,8 +51,8 @@ const ItemPedidos = ({ pedido, indice, setPedidos }) => {
       <td>{pedido.nombreUsuario}</td>
       <td>
         <ul>
-          {pedido.productos.map((producto) => (
-            <li key={producto.id}>
+          {pedido.productos.map((producto, indice) => (
+            <li key={indice + 1}>
               {producto.nombreProducto} x {producto.cantidad}
             </li>
           ))}

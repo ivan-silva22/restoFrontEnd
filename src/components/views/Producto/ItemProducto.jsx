@@ -16,7 +16,7 @@ const ItemProducto = ({ producto, indice, setProductos }) => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        consultaBorrarProducto(producto.id).then((respuesta) => {
+        consultaBorrarProducto(producto._id).then((respuesta) => {
           if (respuesta.status === 200) {
             Swal.fire({
               title: "Producto eliminado!",
@@ -50,7 +50,7 @@ const ItemProducto = ({ producto, indice, setProductos }) => {
       <td className="text-center">
         <Link
           className="btn btn-warning me-1"
-          to={"/administrador/editarproducto/" + producto.id}
+          to={"/administrador/editarproducto/" + producto._id}
         >
           Editar
         </Link>

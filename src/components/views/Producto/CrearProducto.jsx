@@ -134,8 +134,8 @@ const CrearProducto = () => {
               <option value="Clasicas">Clásicas</option>
               <option value="Vegetariana">Vegetariana</option>
               <option value="Vegana">Vegana</option>
-              <option value="Vegana">Postres</option>
-              <option value="Vegana">Bebidas</option>
+              <option value="Postres">Postres</option>
+              <option value="Bebidas">Bebidas</option>
             </Form.Select>
             <Form.Text className="text-danger">
             {errors.categoria?.message}

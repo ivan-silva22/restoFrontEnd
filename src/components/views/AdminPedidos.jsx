@@ -59,7 +59,7 @@ const AdminPedidos = ({pedidos, setPedidos}) => {
             </thead>
             <tbody>
               {pedidos.map((pedido, indice) => (
-                <ItemPedidos pedido={pedido} key={pedido.id} indice={indice} setPedidos={setPedidos} ></ItemPedidos>
+                <ItemPedidos pedido={pedido} key={pedido._id} indice={indice} setPedidos={setPedidos} ></ItemPedidos>
               ))}
             </tbody>
           </Table>
