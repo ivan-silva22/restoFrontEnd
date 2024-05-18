@@ -158,8 +158,8 @@ export const consultaCrearPedidos = async (carrito, total, usuarioLogueado) => {
   const fechaDelPedido = new Date();
   let pedidoCliente = {
     productos: carrito.map((producto) => ({
-      id: producto.nombreProducto._id,
-      nombreProducto: producto.producto.nombreProducto,
+      id: producto._id,
+      nombreProducto: producto.nombreProducto,
       cantidad: producto.cantidad,
     })),
     nombreUsuario: usuarioLogueado.nombreUsuario,
