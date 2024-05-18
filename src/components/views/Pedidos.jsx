@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { consultaCrearPedidos, totalCarrito } from "../helpers/helpers";
+import { agregarAlCarrito, consultaCrearPedidos, totalCarrito } from "../helpers/helpers";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
@@ -51,9 +51,7 @@ const Pedidos = ({ carrito, usuarioLogueado, setCarrito }) => {
                 <div className="col-md-2 text-center">
                   <h3>Cantidad:</h3>
                   <div className="d-flex justify-content-evenly">
-                    <button className="btn bg-btn">+</button>
                     <h4>{producto.cantidad}</h4>
-                    <button className="btn bg-btn">-</button>
                   </div>
                 </div>
                 <div className="col-md-2">
