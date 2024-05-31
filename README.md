@@ -24,6 +24,11 @@
  * Email: admin@gmail.com
  * Contraseña: Admin2024@
 
+## Variables de entorno (Local)
+ * http://localhost:4000/pizzeria-sabores/productos
+ * http://localhost:4000pizzeria-sabores/auth/usuarios
+ * http://localhost:4000pizzeria-sabores/orden/pedidos
+
 ## Como utilizar este repositorio
  En la terminal debes usar los siguientes comandos
  ```
