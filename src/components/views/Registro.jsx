@@ -16,7 +16,6 @@ const Registro = ({setUsuarioLogueado}) => {
 
   const onSubmit = (usuario) => {
     consultaCrearUsuario(usuario).then((respuesta) => {
-      console.log(respuesta)
       const nuevoUsuario = {
         nombreUsuario: usuario.nombreUsuario,
         rol: 'Cliente',
@@ -54,6 +53,10 @@ const Registro = ({setUsuarioLogueado}) => {
                 maxLength: {
                   value: 100,
                   message: "La cantidad maxima de caracteres es de 100 digitos",
+                },
+                pattern: {
+                  value: /^[a-zA-ZÀ-ÿ\s]+$/,
+                  message: "Solo se permite el ingreso de texto",
                 },
               })}
             />

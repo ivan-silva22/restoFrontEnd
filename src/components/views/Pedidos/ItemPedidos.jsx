@@ -39,7 +39,7 @@ const ItemPedidos = ({ pedido, indice, setPedidos }) => {
               "No se pudo eliminar el pedido. Inténtalo mas tarde.",
               "error"
             );
-            console.log(error);
+  
           });
       }
     });

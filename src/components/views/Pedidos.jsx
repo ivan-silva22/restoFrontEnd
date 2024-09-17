@@ -10,7 +10,6 @@ const Pedidos = ({ carrito, usuarioLogueado, setCarrito }) => {
   const navegacion = useNavigate();
 
   const handleClick = () => {
-    console.log('hola')
     consultaCrearPedidos(carrito, total, usuarioLogueado).then((respuesta)=>{
       if(respuesta && respuesta.status === 201){
         Swal.fire(

@@ -3,7 +3,6 @@ const URLProducto = import.meta.env.VITE_API_PRODUCTO;
 const URLPedido = import.meta.env.VITE_API_PEDIDO;
 
 export const login = async (usuario) => {
-  console.log(usuario);
   try {
     const respuesta = await fetch(URLUsuario + "/login",{
       method: "POST",
