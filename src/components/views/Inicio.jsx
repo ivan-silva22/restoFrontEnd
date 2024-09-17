@@ -54,7 +54,6 @@ const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
           agregarAlCarrito(setCarrito, carrito, producto);
           setCarrito = ([...carrito, producto]) 
           sessionStorage.setItem("carrito", JSON.stringify(carrito));
-          console.log(carrito)
         } else {
           Swal.fire({
             title: "Error",
