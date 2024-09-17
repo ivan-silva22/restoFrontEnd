@@ -9,7 +9,6 @@ import avatar_1 from "../../assets/avatar-1.jpg";
 import avatar_2 from "../../assets/avatar-2.jpg";
 import avatar_3 from "../../assets/avatar-3.jpg";
 import horarios from "../../assets/horarios.jpg";
-import horarios_ from "../../assets/horario_.jpg";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import {
@@ -36,22 +35,38 @@ const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
   }, []);
 
   const handlePedidos = (producto) => {
-    if (usuarioLogueado.hasOwnProperty("nombreUsuario")) {
-      Swal.fire({
-        title: "Producto agregado",
-        text: "El producto se agrego correctamente a la sección 'Pedidos'",
-        icon: "success",
-        confirmButtonColor: "#bc8c4c",
-      });
-      agregarAlCarrito(setCarrito, carrito, producto);
-    } else {
-      Swal.fire({
-        title: "Error",
-        text: "Tiene que iniciar sesión para realizar el pedido",
-        icon: "error",
-        confirmButtonColor: "#bc8c4c",
-      });
-    }
+    Swal.fire({
+      title: "¿Estás seguro de que deseas agregar este producto al carrito?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#bc8c4c",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, agregar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (usuarioLogueado.hasOwnProperty("nombreUsuario")) {
+          Swal.fire({
+            title: "Producto agregado",
+            text:"¡El producto se agrego correctamente a la sección 'Pedidos'!",
+            icon: "success",
+            confirmButtonColor: "#bc8c4c",
+          });
+          agregarAlCarrito(setCarrito, carrito, producto);
+          setCarrito = ([...carrito, producto]) 
+          sessionStorage.setItem("carrito", JSON.stringify(carrito));
+          console.log(carrito)
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: "Tiene que iniciar sesión para realizar el pedido",
+            icon: "error",
+            confirmButtonColor: "#bc8c4c",
+          });
+        }
+        
+      }
+    });
+    
   };
 
   return (
@@ -89,7 +104,7 @@ const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
                       handlePedidos(producto)
                     }
                   >
-                    Realizar pedido
+                    Agregar al carrito
                   </button>
                 </Card.Body>
               </Card>

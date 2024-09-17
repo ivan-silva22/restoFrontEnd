@@ -16,8 +16,9 @@ import RutasAdmin from "./components/Routes/RutasAdmin";
 
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem("usuario")) || {};
+  const productosCarrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState(productosCarrito);
   const [pedidos, setPedidos] = useState([]);
 
  

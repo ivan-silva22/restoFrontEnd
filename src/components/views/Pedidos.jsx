@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { agregarAlCarrito, consultaCrearPedidos, totalCarrito } from "../helpers/helpers";
+import { consultaCrearPedidos, totalCarrito } from "../helpers/helpers";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
@@ -10,22 +10,26 @@ const Pedidos = ({ carrito, usuarioLogueado, setCarrito }) => {
   const navegacion = useNavigate();
 
   const handleClick = () => {
-    consultaCrearPedidos(carrito, total, usuarioLogueado).then((respuesta)=>{
-      if(respuesta && respuesta.status === 201){
+    consultaCrearPedidos(carrito, total, usuarioLogueado).then((respuesta) => {
+      if (respuesta && respuesta.status === 201) {
         Swal.fire(
           "Pedido exitoso",
           "¡Tu pedido fue realizado y pronto llegará a tu mesa!",
-          "success",
+          "success"
         );
         setCarrito([]);
         navegacion("/");
       }
-    })
+    });
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     totalCarrito(carrito, setTotal);
-  },[carrito])
+  }, [carrito]);
+
+  const mostrarBoton = carrito.length > 0 ?(<button className="btn bg-btn my-3" onClick={handleClick}>
+    Realizar pedido
+  </button>) : (<></>)
 
   return (
     <main className="main my-5">
@@ -40,7 +44,7 @@ const Pedidos = ({ carrito, usuarioLogueado, setCarrito }) => {
                   <img
                     className="img-fluid rounded"
                     src={producto.imagen}
-                    alt=""
+                    alt={producto.nombreProducto}
                   />
                 </div>
                 <div className="col-md-2">
@@ -57,22 +61,19 @@ const Pedidos = ({ carrito, usuarioLogueado, setCarrito }) => {
                   <h3>Precio</h3>
                   <h5>${producto.precio}</h5>
                 </div>
-                <div className="col-md-2">
-                  <button
-                    className="btn bg-btn my-3"
-                    onClick={handleClick}
-                  >
-                    Realizar pedido
-                  </button>
-                </div>
               </div>
             </Col>
           ))}
         </Row>
         <hr />
         <div className="text-end">
-          <p>Total a pagar: <span className="fw-bold">${total}</span></p>
+          <p>
+            Total a pagar: <span className="fw-bold">${total}</span>
+          </p>
         </div>
+        {
+          mostrarBoton
+        }
       </Container>
     </main>
   );
