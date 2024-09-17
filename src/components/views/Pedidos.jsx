@@ -23,6 +23,7 @@ const Pedidos = ({ carrito, usuarioLogueado, setCarrito }) => {
     });
   };
 
+
   useEffect(() => {
     totalCarrito(carrito, setTotal);
   }, [carrito]);

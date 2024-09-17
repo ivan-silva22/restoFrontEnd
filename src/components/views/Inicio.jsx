@@ -19,7 +19,6 @@ import { Link } from "react-router-dom";
 
 const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
   const [productos, setProductos] = useState([]);
-
   useEffect(() => {
     consultaListaProductos().then((respuesta) => {
       if (respuesta) {
@@ -52,8 +51,8 @@ const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
             confirmButtonColor: "#bc8c4c",
           });
           agregarAlCarrito(setCarrito, carrito, producto);
-          setCarrito = ([...carrito, producto]) 
-          sessionStorage.setItem("carrito", JSON.stringify(carrito));
+          let actualizarCarrito = [...carrito, producto]
+          sessionStorage.setItem("carrito", JSON.stringify(actualizarCarrito));
         } else {
           Swal.fire({
             title: "Error",
@@ -67,6 +66,8 @@ const Inicio = ({ usuarioLogueado, carrito, setCarrito }) => {
     });
     
   };
+
+  
 
   return (
     <main className="main mb-5">
