@@ -1,13 +1,22 @@
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import logo from "../../assets/logo.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
+const Menu = ({ usuarioLogueado, setUsuarioLogueado, setCarrito }) => {
   const navegacion = useNavigate();
 
   const logout = () => {
+    Swal.fire({
+      title: "Sesión cerrada!",
+      text: "Has cerrado sesión con éxito. ¡Hasta pronto!",
+      icon: "success",
+      confirmButtonColor: "#bc8c4c",
+    });
     setUsuarioLogueado({});
+    setCarrito([]);
     sessionStorage.removeItem("usuario");
+    sessionStorage.removeItem("carrito");
     navegacion("/");
   };
 

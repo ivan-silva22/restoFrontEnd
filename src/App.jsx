@@ -30,6 +30,7 @@ function App() {
         <Menu
           usuarioLogueado={usuarioLogueado}
           setUsuarioLogueado={setUsuarioLogueado}
+          setCarrito={setCarrito}
         />
         <Routes>
           <Route
